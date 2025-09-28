@@ -1,0 +1,110 @@
+    DROP TABLE T_SD_PACIENTE;
+    DROP SEQUENCE SQ_PACIENTE_ID;
+
+    CREATE TABLE T_SD_PACIENTE (
+        CD_PACIENTE    NUMBER(6,0) PRIMARY KEY,
+        NM_PACIENTE    VARCHAR2(80),
+        NR_CPF         VARCHAR2(11),
+        DT_NASCIMENTO  DATE,
+        NR_TELEFONE_1  VARCHAR2(11),
+        NR_TELEFONE_2  VARCHAR2(11) NULL,
+        NR_TELEFONE_3  VARCHAR2(11) NULL
+    );
+
+    TRUNCATE TABLE T_SD_PACIENTE;
+
+    CREATE SEQUENCE SQ_PACIENTE_ID
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+SELECT * FROM T_SD_PACIENTE;
+-----------------------------------------------------------------------------------------------------------------------
+DROP TABLE T_SD_MEDICO;
+DROP SEQUENCE SQ_MEDICO_ID;
+
+    CREATE TABLE T_SD_MEDICO(
+        CD_MEDICO NUMBER(6,0) PRIMARY KEY,
+        NM_MEDICO VARCHAR(80),
+        NR_CRM VARCHAR(11),
+        DT_NASCIMENTO DATE,
+        DS_ESPECIALIDADE VARCHAR(60),
+        VL_SALARIO NUMBER(7,2)
+        );
+
+TRUNCATE TABLE T_SD_MEDICO;
+
+CREATE SEQUENCE SQ_MEDICO_ID
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+SELECT * FROM T_SD_MEDICO;
+------------------------------------------------------------------------------------------------------------------------
+    DROP TABLE T_SD_LEMBRETE;
+    DROP SEQUENCE SQ_LEMBRETE_ID;
+
+    CREATE TABLE T_SD_LEMBRETE(
+        CD_LEMBRETE NUMBER(6,0) PRIMARY KEY,
+        DS_MENSAGEM VARCHAR(80),
+        DT_ENVIO DATE
+        );
+
+     TRUNCATE TABLE T_SD_LEMBRETE;
+     CREATE SEQUENCE SQ_LEMBRETE_ID
+     START WITH 1
+     INCREMENT BY 1
+     NOCACHE
+     NOCYCLE;
+    SELECT * FROM T_SD_LEMBRETE;
+------------------------------------------------------------------------------------------------------------------------
+    DROP TABLE T_SD_PARENTE;
+    DROP SEQUENCE SQ_PARENTE_ID;
+
+    CREATE TABLE T_SD_PARENTE(
+        CD_PARENTE NUMBER(6,0) PRIMARY KEY,
+        NM_PARENTE VARCHAR(80),
+        DS_PARENTESCO VARCHAR(40),
+        NR_TELEFONE_1 NUMBER(11),
+        NR_TELEFONE_2 NUMBER(11) NULL,
+        NR_TELEFONE_3 NUMBER(11) NULL,
+        CD_PACIENTE NUMBER(6,0),
+        CD_LEMBRETE NUMBER(6,0)
+        );
+
+    TRUNCATE TABLE T_SD_PARENTE;
+
+    CREATE SEQUENCE SQ_PARENTE_ID
+            START WITH 1
+            INCREMENT BY 1
+            NOCACHE
+            NOCYCLE;
+
+    SELECT * FROM T_SD_PARENTE;
+------------------------------------------------------------------------------------------------------------------------
+   DROP TABLE T_SD_CONSULTA;
+   DROP SEQUENCE SQ_CONSULTA_ID;
+
+    CREATE TABLE T_SD_CONSULTA(
+    CD_CONSULTA NUMBER(6,0) PRIMARY KEY,
+    DT_INICIO DATE,
+    DT_FIM DATE,
+    DS_LINK VARCHAR(30),
+    DS_OBSERVACOES VARCHAR(60),
+    DS_STATUS VARCHAR(40),
+    CD_PACIENTE NUMBER(6,0),
+    CD_MEDICO NUMBER(6,0)
+    );
+
+    TRUNCATE TABLE T_SD_CONSULTA;
+
+    CREATE SEQUENCE SQ_CONSULTA_ID
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+    SELECT * FROM T_SD_CONSULTA;
+
