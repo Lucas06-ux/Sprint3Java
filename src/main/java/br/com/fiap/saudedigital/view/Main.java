@@ -49,6 +49,7 @@ public class Main {
                             break;
                         case 5:
                             gerenciarConsultas(leia, consultaDAO, pacienteDao, medicoDao);
+                            break;
                         case 0:
                             System.out.println("Programa encerrado. Obrigado! 👋");
                             break;
@@ -343,7 +344,7 @@ public class Main {
 // ----------------------------------------------------------------------------------
 
     private static void gerenciarParentes(Scanner leia, ParenteDAO parenteDAO, PacienteDAO pacienteDAO, LembreteDAO lembreteDAO) throws SQLException {
-        int opcao = -1;
+        int opcao;
         do {
             System.out.println("\n--- GERENCIAR PARENTES ---");
             System.out.println("Escolha: \n1-Cadastrar \n2-Atualizar \n3-Pesquisar por id \n4-Listar \n5-Remover \n0-Voltar ao Menu Principal");
@@ -439,7 +440,7 @@ public class Main {
 // ----------------------------------------------------------------------------------
 
     private static void gerenciarConsultas(Scanner leia, ConsultaDAO consultaDao, PacienteDAO pacienteDao, MedicoDAO medicoDao) throws SQLException {
-        int opcao = -1;
+        int opcao;
         do {
             System.out.println("\n--- GERENCIAR CONSULTAS ---");
             System.out.println("Escolha: \n1-Cadastrar \n2-Atualizar \n3-Pesquisar por id \n4-Listar \n5-Remover \n0-Voltar ao Menu Principal");
@@ -544,13 +545,15 @@ public class Main {
         LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, FORMATTER);
         System.out.print("Digite o CPF: ");
         String cpf = leia.nextLine();
+        System.out.println("Digite o email: ");
+        String email = leia.nextLine();
         System.out.print("Digite o telefone principal: ");
         String nmrTelefone1 = leia.nextLine();
         System.out.print("Digite o telefone 2 (opcional): ");
         String nmrTelefone2 = leia.nextLine();
         System.out.print("Digite o telefone 3 (opcional): ");
         String nmrTelefone3 = leia.nextLine();
-        return new Paciente(nome, dataNascimento, cpf, nmrTelefone1, nmrTelefone2, nmrTelefone3);
+        return new Paciente(nome, dataNascimento, cpf, email, nmrTelefone1, nmrTelefone2, nmrTelefone3);
     }//ler paciente
 
     private static Medico lerMedico(Scanner leia) {

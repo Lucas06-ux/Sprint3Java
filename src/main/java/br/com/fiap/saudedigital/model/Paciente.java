@@ -5,14 +5,16 @@ import java.time.LocalDate;
 public class Paciente extends Usuario {
     private int codigoPaciente;
     private String cpf;
+    private String email;
     private String nmrTelefone1;
     private String nmrTelefone2;
     private String nmrTelefone3;
 
-    public Paciente(String nome, LocalDate dataNascimento, String cpf, String nmrTelefone1,
+    public Paciente(String nome, LocalDate dataNascimento, String cpf, String email, String nmrTelefone1,
                     String nmrTelefone2, String nmrTelefone3){
         super(nome, dataNascimento);
         this.cpf = cpf;
+        this.email = email;
         this.nmrTelefone1 = nmrTelefone1;
         this.nmrTelefone2 = nmrTelefone2;
         this.nmrTelefone3 = nmrTelefone3;
@@ -20,10 +22,11 @@ public class Paciente extends Usuario {
     }
 
     public Paciente(int codigoPaciente, String nome, LocalDate dataNascimento,
-                    String cpf, String nmrTelefone1, String nmrTelefone2, String nmrTelefone3) {
+                    String cpf, String email , String nmrTelefone1, String nmrTelefone2, String nmrTelefone3) {
         super(nome, dataNascimento);
         this.codigoPaciente = codigoPaciente;
         this.cpf = cpf;
+        this.email = email;
         this.nmrTelefone1 = nmrTelefone1;
         this.nmrTelefone2 = nmrTelefone2;
         this.nmrTelefone3 = nmrTelefone3;
@@ -44,6 +47,14 @@ public class Paciente extends Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNmrTelefone1() {

@@ -62,8 +62,8 @@ public class Medico extends Usuario{
     @Override
     public String toString() {
         return "Medico" +
+                " codigo do medico= " + codigoMedico +
                 super.toString() +
-                "codigoMedico= " + codigoMedico +
                 ", crm= " + crm +
                 ", especialidade= " + especialidade +
                 ", salario = " + salario;

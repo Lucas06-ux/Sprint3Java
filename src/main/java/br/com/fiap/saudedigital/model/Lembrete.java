@@ -47,8 +47,8 @@ public class Lembrete {
     @Override
     public String toString() {
         return " Lembrete " +
-                " codigoLembrete= " + codigoLembrete +
+                " codigo do lembrete= " + codigoLembrete +
                 ", mensagem= " + mensagem +
-                ", dataEnvio= " + dataEnvio ;
+                ", data do envio= " + dataEnvio ;
     }
 }

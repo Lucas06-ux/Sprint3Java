@@ -100,13 +100,13 @@ public class Parente {
     @Override
     public String toString() {
         return "Parente " +
-                "nome= " + nome +
                 ", codigoParente= " + codigoParente +
-                ", dsParentesco= " + dsParentesco +
-                ", nmrTelefone1= " + nmrTelefone1 +
-                ", nmrTelefone2= " + nmrTelefone2 +
-                ", nmrTelefone3= " + nmrTelefone3 +
-                ", codigoLembrete= " + codigoLembrete +
-                ", codigoPaciente= " + codigoPaciente ;
+                "nome= " + nome +
+                ", parentesco= " + dsParentesco +
+                ", Telefone 1= " + nmrTelefone1 +
+                ", Telefone 2= " + nmrTelefone2 +
+                ", Telefone 3= " + nmrTelefone3 +
+                ", codigo do lembrete= " + codigoLembrete +
+                ", codigo do paciente= " + codigoPaciente ;
     }
 }

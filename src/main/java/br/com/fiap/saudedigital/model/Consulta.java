@@ -101,14 +101,14 @@ public class Consulta {
     @Override
     public String toString() {
         return "Consulta:" +
-                "codigoConsulta= " + codigoConsulta +
-                ", dataInicio= " + dataInicio +
-                ", dataFim= " + dataFim +
+                "codigo da consulta= " + codigoConsulta +
+                ", data de inicio= " + dataInicio +
+                ", data final= " + dataFim +
                 ", link= " + link +
-                ", observacoes= " + observacoes +
-                ", statusConsulta= " + statusConsulta +
-                ", codigoPaciente= " + codigoPaciente +
-                ", codigoMedico= " + codigoMedico;
+                ", observações= " + observacoes +
+                ", status da consulta= " + statusConsulta +
+                ", codigo do paciente= " + codigoPaciente +
+                ", codigo do medico= " + codigoMedico;
     }
 
 }

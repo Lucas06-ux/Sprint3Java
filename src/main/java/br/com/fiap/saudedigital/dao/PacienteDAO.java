@@ -18,15 +18,16 @@ public class PacienteDAO {
     }
     public void cadastrar(Paciente paciente) throws SQLException{
 
-        PreparedStatement stmt = conexao.prepareStatement("insert into t_sd_paciente (cd_paciente, nm_paciente, dt_nascimento, nr_cpf," +
-                "nr_telefone_1, nr_telefone_2, nr_telefone_3) values(sq_paciente_id.nextval,?,?,?,?,?,?)");
+        PreparedStatement stmt = conexao.prepareStatement("insert into t_sd_paciente (cd_paciente, nm_paciente, dt_nascimento, nr_cpf, ds_email," +
+                "nr_telefone_1, nr_telefone_2, nr_telefone_3) values(sq_paciente_id.nextval,?,?,?,?,?,?,?)");
 
         stmt.setString(1, paciente.getNome());
         stmt.setDate(2, Date.valueOf(paciente.getDataNascimento()));
         stmt.setString(3, paciente.getCpf());
-        stmt.setString(4,paciente.getNmrTelefone1());
-        stmt.setString(5, paciente.getNmrTelefone2());
-        stmt.setString(6, paciente.getNmrTelefone3());
+        stmt.setString(4,paciente.getEmail());
+        stmt.setString(5,paciente.getNmrTelefone1());
+        stmt.setString(6, paciente.getNmrTelefone2());
+        stmt.setString(7, paciente.getNmrTelefone3());
 
         stmt.executeUpdate();
         try (ResultSet rs = stmt.getGeneratedKeys()) {
@@ -40,14 +41,15 @@ public class PacienteDAO {
 
         public void atualizar (Paciente paciente) throws SQLException, EntidadeNaoEncontradaException{
         PreparedStatement stmt = conexao.prepareStatement("update t_sd_paciente set nm_paciente = ?," +
-                "dt_nascimento = ?, nr_cpf = ?, nr_telefone_1 = ?, nr_telefone_2 = ?, nr_telefone_3 = ? where cd_paciente = ?");
+                "dt_nascimento = ?, nr_cpf = ?, ds_email = ?, nr_telefone_1 = ?, nr_telefone_2 = ?, nr_telefone_3 = ? where cd_paciente = ?");
             stmt.setString(1, paciente.getNome());
             stmt.setDate(2, Date.valueOf(paciente.getDataNascimento()));
             stmt.setString(3, paciente.getCpf());
-            stmt.setString(4, paciente.getNmrTelefone1());
-            stmt.setString(5, paciente.getNmrTelefone2());
-            stmt.setString(6, paciente.getNmrTelefone3());
-            stmt.setInt(7, paciente.getCodigoPaciente());
+            stmt.setString(4, paciente.getEmail());
+            stmt.setString(5, paciente.getNmrTelefone1());
+            stmt.setString(6, paciente.getNmrTelefone2());
+            stmt.setString(7, paciente.getNmrTelefone3());
+            stmt.setInt(8, paciente.getCodigoPaciente());
 
            if (stmt.executeUpdate() == 0)
                throw new EntidadeNaoEncontradaException("Nenhum paciente encontrado para atualizar! ❌");
@@ -56,7 +58,7 @@ public class PacienteDAO {
 
     public Paciente buscarPorId(int id) throws SQLException, EntidadeNaoEncontradaException {
         PreparedStatement stmt = conexao.prepareStatement("SELECT cd_paciente, nm_paciente, dt_nascimento, " +
-                "nr_cpf, nr_telefone_1, nr_telefone_2, nr_telefone_3 FROM T_SD_PACIENTE WHERE CD_PACIENTE = ?");
+                "nr_cpf, ds_email, nr_telefone_1, nr_telefone_2, nr_telefone_3 FROM T_SD_PACIENTE WHERE CD_PACIENTE = ?");
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
         if (!rs.next())
@@ -98,11 +100,12 @@ public class PacienteDAO {
         String nome = result.getString("nm_paciente");
         LocalDate dataNascimento = result.getDate("dt_nascimento").toLocalDate();
         String cpf = result.getString("nr_cpf");
+        String email = result.getString("ds_email");
         String nmrTelefone1 = result.getString("nr_telefone_1");
         String nmrTelefone2 = result.getString("nr_telefone_2");
         String nmrTelefone3 = result.getString("nr_telefone_3");
 
-        Paciente paciente = new Paciente(codigoPaciente, nome, dataNascimento, cpf, nmrTelefone1, nmrTelefone2, nmrTelefone3);
+        Paciente paciente = new Paciente(codigoPaciente, nome, dataNascimento, cpf, email, nmrTelefone1, nmrTelefone2, nmrTelefone3);
         return paciente;
     }
 
